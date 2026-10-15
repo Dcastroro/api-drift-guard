@@ -1,22 +1,40 @@
 {
   "name": "api-drift-guard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compare local OpenAPI JSON contracts with conservative CI gates and value-free, line-based reports.",
   "private": true,
   "type": "module",
   "license": "MIT",
   "author": "David Castro",
-  "engines": { "node": ">=22" },
-  "bin": { "api-drift-guard": "bin/api-drift-guard.mjs" },
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "api-drift-guard": "bin/api-drift-guard.mjs"
+  },
   "exports": "./src/index.mjs",
-  "repository": { "type": "git", "url": "git+https://github.com/Dcastroro/api-drift-guard.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dcastroro/api-drift-guard.git"
+  },
   "homepage": "https://github.com/Dcastroro/api-drift-guard#readme",
-  "bugs": { "url": "https://github.com/Dcastroro/api-drift-guard/issues" },
+  "bugs": {
+    "url": "https://github.com/Dcastroro/api-drift-guard/issues"
+  },
   "scripts": {
     "test": "node --test",
     "check": "node scripts/check.mjs",
     "demo": "node bin/api-drift-guard.mjs --base examples/base.json --head examples/additive.json",
-    "demo:breaking": "node bin/api-drift-guard.mjs --base examples/base.json --head examples/breaking.json --format markdown"
+    "demo:breaking": "node bin/api-drift-guard.mjs --base examples/base.json --head examples/breaking.json --format markdown",
+    "repo:check": "node scripts/repository-check.mjs",
+    "release:build": "node scripts/build-release.mjs"
   },
-  "keywords": ["openapi", "api", "contract-testing", "automation", "ci", "developer-tools"]
+  "keywords": [
+    "openapi",
+    "api",
+    "contract-testing",
+    "automation",
+    "ci",
+    "developer-tools"
+  ]
 }

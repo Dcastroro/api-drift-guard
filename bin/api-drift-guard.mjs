@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs';
 import { readContract, ContractError } from '../src/input.mjs';
 import { compareParsed } from '../src/index.mjs';
 import { formatReport } from '../src/report.mjs';
 
-const HELP = `API Drift Guard 0.1.0
+const VERSION = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
+const HELP = `API Drift Guard ${VERSION}
 
 Usage: node bin/api-drift-guard.mjs --base <old.json> --head <new.json> [options]
 
@@ -42,7 +44,7 @@ async function main() {
   try {
     options = parseArgs(args);
     if (options.help) { console.log(HELP); return; }
-    if (options.version) { console.log('0.1.0'); return; }
+    if (options.version) { console.log(VERSION); return; }
     const base = await readContract(options.base, 'base');
     const head = await readContract(options.head, 'head');
     const report = compareParsed(base, head, options);

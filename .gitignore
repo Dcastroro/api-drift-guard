@@ -4,3 +4,4 @@ coverage/
 .env.*
 reports/
 *.log
+.release/

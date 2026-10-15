@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
@@ -81,5 +82,5 @@ test('duplicate keys fail instead of silently masking an operation', t => {
 
 test('help and version need no files or credentials', () => {
   assert.match(exec(['--help']).stdout, /Usage:/);
-  assert.equal(exec(['--version']).stdout.trim(), '0.1.0');
+  assert.equal(exec(['--version']).stdout.trim(), JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version);
 });
