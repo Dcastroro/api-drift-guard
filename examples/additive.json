@@ -1,0 +1,18 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Fictional catalog", "version": "1.1.0" },
+  "paths": {
+    "/items": {
+      "get": {
+        "parameters": [{ "name": "limit", "in": "query", "schema": { "type": "integer" } }],
+        "responses": {
+          "200": {
+            "description": "A fictional list",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "type": "string" } } } }
+          }
+        }
+      }
+    },
+    "/health": { "get": { "responses": { "200": { "description": "Ready" } } } }
+  }
+}
